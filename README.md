@@ -30,6 +30,21 @@
 
 ---
 
+
+
+---
+
+## Quick Start - Docker Way 🐳
+
+> **After** you complete the JADX step above, continue with Docker:
+
+### 1️⃣ Clone Repository
+```bash
+git clone https://github.com/DaoudAbuMadi3/QARK-v6.git
+cd QARK-v6
+```
+
+
 ## IMPORTANT — JADX (Required for Reverse Engineering) 🛠️
 
 > **This step is essential and must be completed BEFORE starting Docker.**  
@@ -54,22 +69,12 @@ unzip jadx-1.5.1.zip
 chmod -R +x ../jadx-1.5.1/bin
 ````
 
----
 
-## Quick Start - Docker Way 🐳
 
-> **After** you complete the JADX step above, continue with Docker:
-
-### 1️⃣ Clone Repository
-
-```bash
-git clone https://github.com/DaoudAbuMadi3/QARK-v6.git
-cd QARK-v6
-```
 
 ### 2️⃣ Build and Start Containers
-
 ```bash
+cd ../../../..
 sudo docker compose up -d --build
 ```
 
