@@ -45,27 +45,27 @@ cd QARK-v6
 ```
 
 
-### IMPORTANT — JADX (Required for Reverse Engineering) 🛠️
+### 🌟 IMPORTANT — JADX (Required for Reverse Engineering) 🛠️
 
 > **This step is essential and must be completed BEFORE starting Docker.**  
 > JADX is required for reliable decompilation and reverse engineering results. Place JADX in the repository path shown below so the Docker container can use it at runtime.
 
-```
+```bash
 cd QARK-v6/backend/qark/lib
 ```
-### Download jadx v1.5.1
-```
+### 🌟 Download jadx v1.5.1
+```bash
 wget https://github.com/skylot/jadx/releases/download/v1.5.1/jadx-1.5.1.zip
 ```
-### Prepare jadx folder
-```
+### 🌟 Prepare jadx folder
+```bash
 mkdir jadx-1.5.1
 mv jadx-1.5.1.zip jadx-1.5.1
 cd jadx-1.5.1
 unzip jadx-1.5.1.zip
 ```
-### Ensure executable bits (Linux/mac)
-```
+### 🌟 Ensure executable bits (Linux/mac)
+```bash
 chmod -R +x ../jadx-1.5.1/bin
 ````
 
@@ -90,7 +90,7 @@ http://localhost:3000
 
 ### 4️⃣ Stop Containers
 
-```bash
+```c
 sudo docker compose down
 ```
 
