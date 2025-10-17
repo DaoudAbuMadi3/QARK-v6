@@ -2,7 +2,7 @@
 [![Quick Android Review Kit 🛡️](https://capsule-render.vercel.app/api?text=Quick%20Android%20Review%20Kit&animation=fadeIn&type=waving&color=gradient&height=100)](https://github.com/DaoudAbuMadi3/QARK-v6)
 
 [![QARK6 Design 1](./docs/Pasted%20image.png)](https://github.com/DaoudAbuMadi3/QARK-v6)
-[![QARK6 Design 2](./docs/Pasted%20image%282%29.png)](https://github.com/DaoudAbuMadi3/QARK-v6)
+![QARK6 Design 2](./docs/Pasted%20image%282%29.png)](https://github.com/DaoudAbuMadi3/QARK-v6)
 
 
 
