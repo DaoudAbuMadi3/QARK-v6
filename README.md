@@ -22,7 +22,7 @@
 
 - 🔍 Comprehensive Android security scanning (40+ vulnerability types)  
 - 🎨 Modern web interface with **dark mode**  
-- 📊 Detailed reports (HTML, JSON, XML, CSV)  
+- 📊 Detailed reports (HTML , JSON)  
 - 🚀 Fast scanning with **real-time progress tracking**  
 - 💾 Scan history management  
 - 🛠️ Multiple decompilation tools included: **APKTool, CFR, Procyon, Dex2Jar**  
