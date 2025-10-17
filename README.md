@@ -3,8 +3,8 @@
 # QARK v6 - Quick Android Review Kit 🛡️🐱‍💻 
 [![Quick Android Review Kit 🛡️](https://capsule-render.vercel.app/api?text=Quick%20Android%20Review%20Kit&animation=fadeIn&type=waving&color=gradient&height=100)](https://github.com/DaoudAbuMadi3/QARK-v6)
 
-[![QARK6 Architecture](QARK-v6
-/Docs/Screenshot from 2025-10-17 17-50-05.png)](https://github.com/DaoudAbuMadi3/QARK-v6)
+[![QARK6 Architecture](./docs/Screenshot%20from%202025-10-17%2017-50-05.png)](https://github.com/DaoudAbuMadi3/QARK-v6)
+
 
 
 ## Overview 🌟
