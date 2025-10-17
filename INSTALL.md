@@ -1,6 +1,6 @@
-# QARK v5 - Installation Instructions
+# QARK v6 - Installation Instructions
 
-This guide will help you install and run QARK v5 from scratch after downloading from GitHub.
+This guide will help you install and run QARK v6 from scratch after downloading from GitHub.
 
 ## System Requirements
 
@@ -70,8 +70,8 @@ brew install openjdk@11
 ### Step 2: Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_REPO_URL/qark-v5.git
-cd qark-v5
+git clone https://github.com/YOUR_REPO_URL/qark-v6.git
+cd qark-v6
 ```
 
 ### Step 3: Backend Setup
@@ -143,7 +143,7 @@ Open a new terminal:
 
 ```bash
 # Navigate to frontend directory
-cd qark-v5/frontend
+cd qark-v6/frontend
 
 # Install dependencies
 yarn install
@@ -181,7 +181,7 @@ Open your web browser and navigate to:
 http://localhost:3000
 ```
 
-You should see the QARK v5 home page with the upload interface.
+You should see the QARK v6 home page with the upload interface.
 
 ## Verification Tests
 
@@ -199,7 +199,7 @@ Expected response:
 ### Test 2: Frontend Access
 
 Open http://localhost:3000 in your browser. You should see:
-- QARK v5 logo and header
+- QARK v6 logo and header
 - File upload area
 - Feature cards
 
@@ -334,7 +334,7 @@ Add this content:
 ```ini
 [program:qark-backend]
 command=/path/to/venv/bin/python -m uvicorn server:app --host 0.0.0.0 --port 8001
-directory=/path/to/qark-v5/backend
+directory=/path/to/qark-v6/backend
 autostart=true
 autorestart=true
 stderr_logfile=/var/log/supervisor/qark-backend.err.log
@@ -342,7 +342,7 @@ stdout_logfile=/var/log/supervisor/qark-backend.out.log
 
 [program:qark-frontend]
 command=/usr/local/bin/yarn start
-directory=/path/to/qark-v5/frontend
+directory=/path/to/qark-v6/frontend
 autostart=true
 autorestart=true
 stderr_logfile=/var/log/supervisor/qark-frontend.err.log

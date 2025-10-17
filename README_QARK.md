@@ -1,4 +1,4 @@
-# QARK v5 - Quick Android Review Kit
+# QARK v6 - Quick Android Review Kit
 
 <div align="center">
   <img src="https://img.shields.io/badge/Version-5.0-blue" alt="Version">
@@ -9,7 +9,7 @@
 
 ## 📋 Overview
 
-QARK v5 is an advanced tool for scanning security vulnerabilities in Android applications. The tool features a modern and attractive web interface that facilitates the scanning process and provides detailed and accurate results.
+QARK v6 is an advanced tool for scanning security vulnerabilities in Android applications. The tool features a modern and attractive web interface that facilitates the scanning process and provides detailed and accurate results.
 
 ### ✨ Key Features
 
@@ -231,7 +231,7 @@ We welcome all contributions! Please:
 
 ## 👥 Team
 
-QARK v5 was developed by:
+QARK v6 was developed by:
 
 - **Jineen Abu Amr**
 - **Daoud Abu Madi**
@@ -261,5 +261,5 @@ For support or to report issues:
 
 <div align="center">
   <p>Made with ❤️ by QARK Team</p>
-  <p>QARK v5 - Quick Android Review Kit</p>
+  <p>QARK v6 - Quick Android Review Kit</p>
 </div>

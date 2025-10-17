@@ -264,4 +264,4 @@ Please open an Issue on GitHub or contact the team.
 
 ---
 
-Developed by QARK v5 Team
+Developed by QARK v6 Team

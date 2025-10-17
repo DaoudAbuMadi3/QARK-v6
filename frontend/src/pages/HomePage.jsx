@@ -89,7 +89,7 @@ const HomePage = () => {
             <div className="flex items-center gap-3">
               <Shield className="w-10 h-10 text-blue-500" />
               <div>
-                <h1 className="text-2xl font-bold text-white">QARK v5</h1>
+                <h1 className="text-2xl font-bold text-white">QARK v6</h1>
                 <p className="text-sm text-gray-400">Quick Android Review Kit</p>
               </div>
             </div>

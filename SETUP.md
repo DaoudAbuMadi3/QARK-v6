@@ -1,6 +1,6 @@
-# QARK v5 - Complete Setup Guide
+# QARK v6 - Complete Setup Guide
 
-This guide walks through setting up QARK v5 from scratch, just like downloading it from GitHub.
+This guide walks through setting up QARK v6 from scratch, just like downloading it from GitHub.
 
 ## 📋 Prerequisites
 
@@ -17,7 +17,7 @@ Before starting, ensure you have:
 ```bash
 # If from GitHub
 git clone <repository-url>
-cd qark-v5
+cd qark-v6
 
 # Or if you already have the files
 cd /app

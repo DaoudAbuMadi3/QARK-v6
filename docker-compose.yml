@@ -33,7 +33,7 @@ services:
       - REACT_APP_API_URL=http://localhost:8000
     volumes:
       - ./frontend:/app
-      - /app/node_modules  # ← هذا السطر المهم! يحفظ node_modules داخل الحاوية
+      - /app/node_modules  
       
 volumes:
   mongo-data:

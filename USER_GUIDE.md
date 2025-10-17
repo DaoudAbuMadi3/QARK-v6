@@ -1,4 +1,4 @@
-# QARK v5 - Comprehensive User Guide
+# QARK v6 - Comprehensive User Guide
 
 ## 🎯 Table of Contents
 
@@ -13,9 +13,9 @@
 
 ## 📖 Introduction
 
-QARK v5 is an advanced tool for scanning security vulnerabilities in Android applications. It has been developed with a modern and attractive web interface that makes the scanning process easy and effective.
+QARK v6 is an advanced tool for scanning security vulnerabilities in Android applications. It has been developed with a modern and attractive web interface that makes the scanning process easy and effective.
 
-### What's New in v5?
+### What's New in v6?
 
 ✨ **Complete Web Interface**: Modern design with intuitive UX
 🚀 **Enhanced Performance**: Faster and more efficient processing  
@@ -438,13 +438,13 @@ For assistance:
 1. Review this guide first
 2. Check the logs
 3. Search GitHub Issues
-4. Contact the team
+4. Contact Me
 
 ---
 
 <div align="center">
 
-**QARK v5 - Quick Android Review Kit**
+**QARK v6 - Quick Android Review Kit**
 
 Developed with love and precision 💙
 

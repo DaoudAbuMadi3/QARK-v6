@@ -1,8 +1,8 @@
-# QARK v5 - Decompilation Tools Documentation
+# QARK v6 - Decompilation Tools Documentation
 
 ## Overview
 
-QARK v5 uses multiple decompilation tools to convert Android APK files into readable Java source code for security analysis. These tools work in a fallback chain to ensure maximum compatibility.
+QARK v6 uses multiple decompilation tools to convert Android APK files into readable Java source code for security analysis. These tools work in a fallback chain to ensure maximum compatibility.
 
 ## Included Tools
 
@@ -12,7 +12,7 @@ All decompilation tools are included in the repository at `backend/qark/lib/`. N
 
 **Location:** `backend/qark/lib/jadx-1.5.0/`
 
-**Description:** JADX is the primary decompilation tool used by QARK v5. It directly decompiles DEX bytecode to Java source code with high accuracy and readability.
+**Description:** JADX is the primary decompilation tool used by QARK v6. It directly decompiles DEX bytecode to Java source code with high accuracy and readability.
 
 **Features:**
 - Direct DEX to Java decompilation
@@ -148,7 +148,7 @@ java -jar procyon.jar -jar input.jar -o output_dir
 
 ## Decompilation Flow
 
-QARK v5 uses a smart fallback system:
+QARK v6 uses a smart fallback system:
 
 ```
 1. Run APKTool (always)

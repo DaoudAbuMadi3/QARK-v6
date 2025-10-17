@@ -112,7 +112,7 @@ const ScanPage = () => {
             </Button>
             <div className="flex items-center gap-3">
               <Shield className="w-8 h-8 text-blue-500" />
-              <h1 className="text-xl font-bold text-white">QARK v5</h1>
+              <h1 className="text-xl font-bold text-white">QARK v6</h1>
             </div>
           </div>
         </div>
