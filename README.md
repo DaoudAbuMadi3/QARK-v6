@@ -41,7 +41,6 @@
 ### 1️⃣ Clone Repository
 ```bash
 git clone https://github.com/DaoudAbuMadi3/QARK-v6.git
-cd QARK-v6
 ```
 
 
