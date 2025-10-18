@@ -229,14 +229,11 @@ We welcome all contributions! Please:
 4. Push to Branch
 5. Open Pull Request
 
-## 👥 Team
 
-QARK v6 was developed by:
+## QARK v6 was developed by:
 
-- **Jineen Abu Amr**
 - **Daoud Abu Madi**
-- **3asem Alselwady**
-- **R7mah Alqur3an**
+
 
 ## 📄 License
 
@@ -260,6 +257,6 @@ For support or to report issues:
 ---
 
 <div align="center">
-  <p>Made with ❤️ by QARK Team</p>
+  <p>Made with ❤️ by Daoud Abu Madi</p>
   <p>QARK v6 - Quick Android Review Kit</p>
 </div>
