@@ -433,4 +433,4 @@ For questions or support, please visit our GitHub repository or contact the deve
 
 ---
 
-Developed by: Jineen Abu Amr • Daoud Abu Madi • 3asem Alselwady • R7mah Alqur3an
+Developed by: Daoud Abu Madi 
