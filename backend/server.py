@@ -171,6 +171,64 @@ async def download_report(scan_id: str, report_type: str):
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
 
+
+@api_router.post("/qark/scan/{scan_id}/build-poc")
+async def build_poc(scan_id: str, background_tasks: BackgroundTasks):
+    """
+    Build POC (exploit APK) for vulnerabilities found in scan
+    """
+    try:
+        # Check if POC already exists
+        poc_info = qark_scanner.get_poc_info(scan_id)
+        if poc_info and poc_info.get("poc_built"):
+            return {"message": "POC already built", "poc_info": poc_info}
+        
+        # Build POC in background
+        background_tasks.add_task(qark_scanner.build_poc, scan_id)
+        
+        return {"message": "POC build started", "scan_id": scan_id}
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+
+@api_router.get("/qark/scan/{scan_id}/poc-status")
+async def get_poc_status(scan_id: str):
+    """
+    Get POC build status
+    """
+    try:
+        poc_info = qark_scanner.get_poc_info(scan_id)
+        if poc_info is None:
+            return {"poc_built": False, "message": "POC not built yet"}
+        return poc_info
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+
+@api_router.get("/qark/scan/{scan_id}/download-poc")
+async def download_poc(scan_id: str):
+    """
+    Download POC APK file
+    """
+    try:
+        poc_info = qark_scanner.get_poc_info(scan_id)
+        
+        if poc_info is None or not poc_info.get("poc_built"):
+            raise HTTPException(status_code=404, detail="POC not built yet")
+        
+        poc_path = poc_info.get("poc_path")
+        
+        if not poc_path or not os.path.exists(poc_path):
+            raise HTTPException(status_code=404, detail="POC APK file not found")
+        
+        return FileResponse(
+            poc_path,
+            media_type="application/vnd.android.package-archive",
+            filename=f"qark_poc_{scan_id}.apk"
+        )
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
 # Include the router in the main app
 app.include_router(api_router)
 
