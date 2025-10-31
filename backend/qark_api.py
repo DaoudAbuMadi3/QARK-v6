@@ -324,6 +324,85 @@ class QarkScanner:
         del self.scans[scan_id]
         
         logger.info(f"Deleted scan: {scan_id}")
+    
+    async def build_poc(self, scan_id: str) -> Dict[str, Any]:
+        """Build POC (exploit APK) for vulnerabilities found"""
+        if scan_id not in self.scans:
+            raise ValueError(f"Scan ID not found: {scan_id}")
+        
+        scan_data = self.scans[scan_id]
+        
+        # Check if scan is completed
+        if scan_data["status"]["status"] != "completed":
+            raise ValueError("Cannot build POC for incomplete scan")
+        
+        # Check if scanner and decompiler data exist
+        if "scanner" not in scan_data or "decompiler" not in scan_data:
+            raise ValueError("Scanner data not available for POC building")
+        
+        scanner = scan_data["scanner"]
+        decompiler = scan_data["decompiler"]
+        
+        try:
+            logger.info(f"Building POC for scan {scan_id}")
+            
+            from qark.apk_builder import APKBuilder
+            
+            # Create POC directory
+            poc_dir = self.base_output_dir / scan_id / "poc"
+            poc_dir.mkdir(parents=True, exist_ok=True)
+            
+            # Get Android SDK path from environment or use default
+            android_sdk_path = os.environ.get('ANDROID_SDK_ROOT', os.environ.get('ANDROID_HOME', '/opt/android-sdk'))
+            
+            # Get APK name from filename
+            apk_name = Path(scan_data["request"]["filename"]).stem
+            
+            # Build exploit APK
+            apk_builder = APKBuilder(
+                exploit_apk_path=str(poc_dir),
+                issues=scanner.issues,
+                apk_name=apk_name,
+                manifest_path=decompiler.manifest_path,
+                sdk_path=android_sdk_path
+            )
+            
+            # Build the APK
+            apk_builder.build()
+            
+            # Find the built APK
+            built_apk_path = None
+            apk_search_path = Path(apk_builder.exploit_apk_path) / "app" / "build" / "outputs" / "apk" / "debug"
+            
+            if apk_search_path.exists():
+                apk_files = list(apk_search_path.glob("*.apk"))
+                if apk_files:
+                    built_apk_path = str(apk_files[0])
+            
+            # Save POC info
+            poc_info = {
+                "poc_built": True,
+                "poc_path": built_apk_path,
+                "build_directory": apk_builder.exploit_apk_path,
+                "timestamp": datetime.now().isoformat()
+            }
+            
+            self.scans[scan_id]["poc_info"] = poc_info
+            
+            logger.info(f"POC built successfully for scan {scan_id}")
+            
+            return poc_info
+            
+        except Exception as e:
+            logger.error(f"Failed to build POC for {scan_id}: {str(e)}", exc_info=True)
+            raise HTTPException(status_code=500, detail=f"Failed to build POC: {str(e)}")
+    
+    def get_poc_info(self, scan_id: str) -> Optional[Dict[str, Any]]:
+        """Get POC build information"""
+        if scan_id not in self.scans:
+            raise ValueError(f"Scan ID not found: {scan_id}")
+        
+        return self.scans[scan_id].get("poc_info")
 
 
 # Global scanner instance
