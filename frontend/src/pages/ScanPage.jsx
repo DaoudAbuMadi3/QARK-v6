@@ -282,6 +282,65 @@ const ScanPage = () => {
               </CardContent>
             </Card>
 
+            {/* POC Builder */}
+            <Card className="bg-gradient-to-br from-purple-900/50 to-purple-800/50 border-purple-700 mb-6">
+              <CardHeader>
+                <div className="flex items-center gap-3">
+                  <Bug className="w-6 h-6 text-purple-400" />
+                  <div>
+                    <CardTitle className="text-white">Proof of Concept (POC)</CardTitle>
+                    <CardDescription className="text-gray-300 mt-1">
+                      Build an exploit APK to test vulnerabilities
+                    </CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                {pocStatus?.poc_built ? (
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2 text-green-400">
+                      <CheckCircle2 className="w-5 h-5" />
+                      <span className="font-semibold">POC APK Ready</span>
+                    </div>
+                    <p className="text-gray-300 text-sm">
+                      The exploit APK has been built successfully. Download it to test the vulnerabilities found in the application.
+                    </p>
+                    <Button
+                      onClick={downloadPoc}
+                      className="bg-purple-600 hover:bg-purple-700"
+                    >
+                      <Download className="w-4 h-4 mr-2" />
+                      Download POC APK
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    <p className="text-gray-300 text-sm">
+                      Build a Proof of Concept APK to demonstrate and test the vulnerabilities discovered in this scan. 
+                      The POC APK will include exploit modules for exported components, intents, and other security issues.
+                    </p>
+                    <Button
+                      onClick={buildPoc}
+                      disabled={buildingPoc}
+                      className="bg-purple-600 hover:bg-purple-700"
+                    >
+                      {buildingPoc ? (
+                        <>
+                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                          Building POC...
+                        </>
+                      ) : (
+                        <>
+                          <Bug className="w-4 h-4 mr-2" />
+                          Build POC APK
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
             {/* Vulnerabilities List */}
             <Card className="bg-gray-800/50 border-gray-700">
               <CardHeader>
