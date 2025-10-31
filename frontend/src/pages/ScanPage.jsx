@@ -49,8 +49,76 @@ const ScanPage = () => {
     try {
       const response = await axios.get(`${API}/qark/scan/${scanId}/result`);
       setResult(response.data);
+      
+      // Check POC status
+      fetchPocStatus();
     } catch (error) {
       console.error('Failed to fetch result:', error);
+    }
+  };
+
+  const fetchPocStatus = async () => {
+    try {
+      const response = await axios.get(`${API}/qark/scan/${scanId}/poc-status`);
+      setPocStatus(response.data);
+    } catch (error) {
+      console.error('Failed to fetch POC status:', error);
+    }
+  };
+
+  const buildPoc = async () => {
+    try {
+      setBuildingPoc(true);
+      toast.info('Building POC APK... This may take a few minutes');
+      
+      const response = await axios.post(`${API}/qark/scan/${scanId}/build-poc`);
+      
+      if (response.data.poc_info) {
+        setPocStatus(response.data.poc_info);
+        toast.success('POC APK built successfully!');
+      } else {
+        // Poll for completion
+        const pollInterval = setInterval(async () => {
+          const statusResponse = await axios.get(`${API}/qark/scan/${scanId}/poc-status`);
+          if (statusResponse.data.poc_built) {
+            setPocStatus(statusResponse.data);
+            setBuildingPoc(false);
+            clearInterval(pollInterval);
+            toast.success('POC APK built successfully!');
+          }
+        }, 3000);
+        
+        // Stop polling after 5 minutes
+        setTimeout(() => {
+          clearInterval(pollInterval);
+          setBuildingPoc(false);
+        }, 300000);
+      }
+    } catch (error) {
+      console.error('Failed to build POC:', error);
+      toast.error('Failed to build POC APK');
+      setBuildingPoc(false);
+    }
+  };
+
+  const downloadPoc = async () => {
+    try {
+      const response = await axios.get(`${API}/qark/scan/${scanId}/download-poc`, {
+        responseType: 'blob',
+      });
+
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `qark_poc_${scanId}.apk`);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      
+      toast.success('Downloaded POC APK successfully');
+    } catch (error) {
+      console.error('Download error:', error);
+      toast.error('Failed to download POC APK');
     }
   };
 
