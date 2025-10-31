@@ -93,21 +93,24 @@ class Decompiler:
 
         apktool_out = self.build_directory / "apktool_out"
         
-        # Format command according to the OS
-        cmd = APK_TOOL_COMMAND.format(
-            apktool_jar=APK_TOOL_PATH,
-            apk=self.path_to_source,
-            out_dir=apktool_out
-        )
-
         try:
-            # Execute differently depending on OS
-            if OS == "Windows":
-                # On Windows, use shell=True and don't split the command
-                subprocess.check_call(cmd, shell=True)
-            else:
-                # On Linux/Mac, use shlex to split and shell=False
-                subprocess.check_call(shlex.split(cmd))
+            # Use list format for subprocess to handle spaces properly
+            cmd = [
+                'java',
+                '-Djava.awt.headless=true',
+                '-jar',
+                str(APK_TOOL_PATH),
+                'd',
+                str(self.path_to_source),
+                '--no-src',
+                '--force',
+                '-m',
+                '-o',
+                str(apktool_out)
+            ]
+            
+            # Execute command (list format works on all platforms)
+            subprocess.check_call(cmd)
                 
             manifest_src = apktool_out / "AndroidManifest.xml"
             manifest_dest = self.build_directory / "AndroidManifest.xml"
