@@ -193,12 +193,17 @@ class Decompiler:
         cfr_out = self.build_directory / "cfr_out"
         cfr_out.mkdir(parents=True, exist_ok=True)
         
-        if OS == "Windows":
-            cmd = f'java -jar "{CFR_JAR}" "{jar_path}" --outputdir "{cfr_out}"'
-            subprocess.check_call(cmd, shell=True)
-        else:
-            cmd = f"java -jar {CFR_JAR} {jar_path} --outputdir {cfr_out}"
-            subprocess.check_call(shlex.split(cmd))
+        # Use list format for subprocess to handle spaces properly
+        cmd = [
+            'java',
+            '-jar',
+            str(CFR_JAR),
+            str(jar_path),
+            '--outputdir',
+            str(cfr_out)
+        ]
+        
+        subprocess.check_call(cmd)
             
         self.decompiled_java_path = cfr_out
         self.decompiler_used = "cfr"
@@ -208,12 +213,19 @@ class Decompiler:
         procyon_out = self.build_directory / "procyon_out"
         procyon_out.mkdir(parents=True, exist_ok=True)
         
-        if OS == "Windows":
-            cmd = f'java -jar "{PROCYON_JAR}" "{jar_path}" --loglevel WARNING -o "{procyon_out}"'
-            subprocess.check_call(cmd, shell=True)
-        else:
-            cmd = f"java -jar {PROCYON_JAR} {jar_path} --loglevel WARNING -o {procyon_out}"
-            subprocess.check_call(shlex.split(cmd))
+        # Use list format for subprocess to handle spaces properly
+        cmd = [
+            'java',
+            '-jar',
+            str(PROCYON_JAR),
+            str(jar_path),
+            '--loglevel',
+            'WARNING',
+            '-o',
+            str(procyon_out)
+        ]
+        
+        subprocess.check_call(cmd)
             
         self.decompiled_java_path = procyon_out
         self.decompiler_used = "procyon"
