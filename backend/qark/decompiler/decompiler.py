@@ -140,12 +140,16 @@ class Decompiler:
         log.info("🧩 Running JADX decompiler... (Attempting direct Java decompilation)")
         jadx_out = self.build_directory / "jadx_out"
         
-        if OS == "Windows":
-            cmd = f'"{JADX_PATH}" --no-res -d "{jadx_out}" "{self.path_to_source}"'
-            subprocess.check_call(cmd, shell=True)
-        else:
-            cmd = f"{JADX_PATH} --no-res -d {jadx_out} {self.path_to_source}"
-            subprocess.check_call(shlex.split(cmd))
+        # Use list format for subprocess to handle spaces properly
+        cmd = [
+            str(JADX_PATH),
+            '--no-res',
+            '-d',
+            str(jadx_out),
+            str(self.path_to_source)
+        ]
+        
+        subprocess.check_call(cmd)
             
         log.info("✅ JADX decompilation completed")
         self.decompiled_java_path = jadx_out
