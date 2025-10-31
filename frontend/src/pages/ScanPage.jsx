@@ -18,6 +18,8 @@ const ScanPage = () => {
   const [status, setStatus] = useState(null);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [pocStatus, setPocStatus] = useState(null);
+  const [buildingPoc, setBuildingPoc] = useState(false);
 
   useEffect(() => {
     fetchStatus();
