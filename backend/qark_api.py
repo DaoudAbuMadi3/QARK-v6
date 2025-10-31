@@ -259,8 +259,10 @@ class QarkScanner:
                 decompiled_path=str(decompiler.decompiled_java_path) if decompiler.decompiled_java_path else None
             )
             
-            # Save result
+            # Save result and scanner data for POC building
             self.scans[scan_id]["result"] = scan_result.model_dump()
+            self.scans[scan_id]["scanner"] = scanner
+            self.scans[scan_id]["decompiler"] = decompiler
             
             # Update final status
             self.update_scan_status(scan_id, "completed", 100, f"Scan completed. Found {len(vulnerabilities)} vulnerabilities")
