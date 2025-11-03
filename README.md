@@ -35,44 +35,14 @@
 
 ## Quick Start - Docker Way 🐳
 
-> **After** you complete the JADX step above, continue with Docker:
-
 ### 1️⃣ Clone Repository
 ```bash
 git clone https://github.com/DaoudAbuMadi3/QARK-v6.git
+cd QARK-v6
 ```
-
-
-### 🌟 IMPORTANT — JADX (Required for Reverse Engineering) 🛠️
-
-> **This step is essential and must be completed BEFORE starting Docker.**  
-> JADX is required for reliable decompilation and reverse engineering results. Place JADX in the repository path shown below so the Docker container can use it at runtime.
-
-```bash
-cd QARK-v6/backend/qark/lib
-```
-### 🌟 Download jadx v1.5.1
-```bash
-wget https://github.com/skylot/jadx/releases/download/v1.5.1/jadx-1.5.1.zip
-```
-### 🌟 Prepare jadx folder
-```bash
-mkdir jadx-1.5.1
-mv jadx-1.5.1.zip jadx-1.5.1
-cd jadx-1.5.1
-unzip jadx-1.5.1.zip
-```
-### 🌟 Ensure executable bits (Linux/mac)
-```bash
-chmod -R +x ../jadx-1.5.1/bin
-````
-
-
-
 
 ### 2️⃣ Build and Start Containers
 ```bash
-cd ../../../..
 sudo docker compose up -d --build
 ```
 
@@ -114,17 +84,17 @@ http://localhost:3000
 
 ## Decompilation Tools Included 🧰
 
-All tools used by QARK are bundled or expected in `backend/qark/lib`. Make sure JADX (see above) is present before Docker start.
+All tools used by QARK are bundled in the Docker image.
 
-| Tool    | Path                                                                    |
-| ------- | ----------------------------------------------------------------------- |
-| APKTool | `backend/qark/lib/apktool/apktool.jar`                                  |
-| CFR     | `backend/qark/lib/cfr.jar`                                              |
-| Procyon | `backend/qark/lib/procyon.jar`                                          |
-| JADX    | `backend/qark/lib/jadx-1.5.1/` (download manually — see IMPORTANT note) |
-| Dex2Jar | `backend/qark/lib/dex2jar/`                                             |
+| Tool    | Path                                   |
+| ------- | -------------------------------------- |
+| APKTool | `backend/qark/lib/apktool/apktool.jar` |
+| CFR     | `backend/qark/lib/cfr.jar`             |
+| Procyon | `backend/qark/lib/procyon.jar`         |
+| JADX    | `backend/qark/lib/jadx-1.5.1/`         |
+| Dex2Jar | `backend/qark/lib/dex2jar/`            |
 
-> No other downloads are required once jadx is placed.
+> No manual downloads are required.
 
 ---
 
@@ -162,7 +132,7 @@ qark-v6/
 │           ├── apktool/
 │           ├── cfr.jar
 │           ├── procyon.jar
-│           ├── jadx-1.5.1/    <- place JADX here BEFORE docker up
+│           ├── jadx-1.5.1/
 │           └── dex2jar/
 ├── frontend/
 ├── docs/
